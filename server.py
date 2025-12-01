@@ -26,24 +26,18 @@ CATEGORIES = load_categories()
 
 
 @mcp.tool()
-def check_category(category: str) -> dict:
+def is_category_valid(category: str) -> bool:
     """
-    Check if a category exists in the valid categories list.
+    Check if a category name is in the valid categories list.
 
     Args:
         category: The category string to check (e.g., "Gem/Cuisson/Divers")
 
     Returns:
-        A dict with 'exists' (bool) and 'category' (str) fields
+        True if the category name is in the valid categories list, False otherwise
     """
-    exists = category in CATEGORIES
-    return {
-        "exists": exists,
-        "category": category,
-        "message": f"Category '{category}' {'exists' if exists else 'does not exist'} in the list.",
-    }
+    return category in CATEGORIES
 
 
 if __name__ == "__main__":
     mcp.run()
-
