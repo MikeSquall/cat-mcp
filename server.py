@@ -39,5 +39,18 @@ def is_category_valid(category: str) -> bool:
     return category in CATEGORIES
 
 
+@mcp.tool()
+def get_possible_subcategories(category: str) -> list[str]:
+    """
+    Get all possible subcategories for a given category.
+
+    Args:
+        category: The category to get the subcategories for (e.g., "Gem/Cuisson/Divers")
+
+    Returns:
+        List of possible subcategories
+    """
+    return sorted(cat for cat in CATEGORIES if cat.startswith(category))
+
 if __name__ == "__main__":
     mcp.run()
